@@ -7,26 +7,25 @@ const Employee = function(employee){
     this.workExperience = employee['workExperience'];
     this.isPrivileges = employee['isPrivileges'];
     this.gender = employee['gender'];
+	Object.defineProperties(this, {
+        fullInfo: {
+            get: function(){
+                let tempStr = '';
+                for(let key in this){
+                    if(this.hasOwnProperty(key)) tempStr += `${key} - ${this[key]}, `;
+                }
+                return tempStr.slice(0, -2);
+             }
+            ,set: function(arr){
+                for (let key in arr) this[key] = arr[key];
+            }
+        }
+    });
 }
 
 Employee.prototype.getFullName = function(){
     return `${this.surname} ${this.name}`;
 }
-
-Object.defineProperties(Employee.prototype, {
-    fullInfo: {
-         get: function(){
-            let tempStr = '';
-            for(let key in this){
-                if(this.hasOwnProperty(key)) tempStr += `${key} - ${this[key]}, `;
-            }
-            return tempStr.slice(0, -2);
-         }
-        ,set: function(arr){
-            for (let key in arr) this[key] = arr[key];
-        }
-    }
-});
 
 const employeeObj = new Employee(emplyeeArr[0]);
 
