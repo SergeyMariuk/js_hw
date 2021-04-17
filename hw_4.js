@@ -33,7 +33,7 @@ class Student{
     }
 }
 
-// Task_2
+// Task_2*
 class CustomString{
     reverse(str){
         let tmpStr = '';
@@ -68,3 +68,37 @@ class CustomString{
         return tmpStr;
     }
 }
+
+// Task_3*
+class Validator{
+    checkIsEmail(emal){
+        let result = false;
+        let emailParts = emal.split('@');
+        if(typeof emal == 'string' && emailParts.length == 2 && emailParts[0].length != 0 && emailParts[1].length != 0) result = true;
+        else result = false;
+        let secondEmailParts = emailParts[1].split('.');
+        if(secondEmailParts.length == 2 && secondEmailParts[0].length != 0 && secondEmailParts[1].length != 0 && (secondEmailParts[0] === 'gmail' || secondEmailParts[0] === 'mail') && (secondEmailParts[1] === 'com' || secondEmailParts[1] === 'ru')) result = true;
+        else result = false;
+        return result;
+    }
+
+    checkIsDomain(domain){
+        let result = false;
+        let address = domain.split('.');
+        if(typeof domain == 'string' && address.length == 2 && address[0].length != 0 && address[1].length != 0 && (address[1] === 'com' || address[1] === 'ua' || address[1] === 'ru')) result = true;
+        else result = false;
+
+        return result;
+
+    }
+    checkIsDate(data){
+        let result = false;
+        let dt = data.split('.');
+        if(typeof data == 'string' && dt[0].lenght != 0 && Number(dt[0]) >= 1 && Number(dt[0]) <= 31 && dt[1].lenght != 0 && Number(dt[1]) >= 1 && Number(dt[1]) <= 12 && dt[2].length != 0 &&  Number(dt[2]) >= 0)  result = true;
+        else result = false;
+        
+        return result;
+    }
+}
+
+var validator = new Validator();
