@@ -21,7 +21,7 @@ const searchCandidatesByPhoneNumber = phone => {
 const getCandidateById = id => {
     let tmpArr = [];
     condidateArr.forEach(element => {
-    if(element._id === id) Object.assign(tmpArr, element)
+        if(element._id === id) Object.assign(tmpArr, element)
     })
     tmpArr['registered'] = `${tmpArr['registered'].split('-')[2].split('T')[0]}/${tmpArr['registered'].split('-')[1]}/${tmpArr['registered'].split('-')[0]}`;
     return tmpArr;
